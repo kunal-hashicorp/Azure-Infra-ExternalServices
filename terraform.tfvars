@@ -28,7 +28,7 @@ tags = {
 }
 
 pg_admin_username = "postgres"
-pg_admin_password = "Iamdb123"
+pg_admin_password = ""
 pg_database_name  = "kunals"
 pg_version        = "15"
 
