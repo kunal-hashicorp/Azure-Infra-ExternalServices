@@ -253,6 +253,17 @@ resource "azurerm_postgresql_flexible_server_database" "pgdb" {
   charset   = "UTF8"
 }
 
+# ---------- Allowlist citext on the Flexible Server (Option A) ----------
+resource "azurerm_postgresql_flexible_server_configuration" "extensions" {
+  name      = "azure.extensions"
+  server_id = azurerm_postgresql_flexible_server.pg.id
+
+  # Add multiple extensions comma-separated if needed
+  value = "citext"
+
+  depends_on = [azurerm_postgresql_flexible_server.pg]
+}
+
 # ---------- AWS Route53 DNS ----------
 data "aws_route53_zone" "target" {
   name         = local.zone_name
